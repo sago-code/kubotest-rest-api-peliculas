@@ -4,7 +4,7 @@
 Esta es una API REST desarrollada con TypeScript y Express para gestionar una base de datos de películas.
 
 ## Estructura del Proyecto 
-
+```
 src/
 ├── app.ts # Configuración principal de la aplicación
 ├── init.ts # Inicialización de la aplicación
