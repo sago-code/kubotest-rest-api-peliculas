@@ -123,6 +123,7 @@ Contiene funciones intermedias para procesamiento de solicitudes, como:
 
 ### Routes
 Define las rutas de la API y conecta los endpoints con los controladores correspondientes.
+Y la coleccion de endpints en postman se puede encontrar en la carpeta postman
 
 ## autor: Santiago Orjuela Vera.
         Tecnico en programacion de software
