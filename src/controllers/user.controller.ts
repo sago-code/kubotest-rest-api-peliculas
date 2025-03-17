@@ -26,6 +26,10 @@ export const updatePassword = async (req: AuthenticatedRequest, res: Response): 
         return res.status(400).json({ message: 'ID de Usuario requerido' });
     }
 
+    if (userId == 0) {
+        return res.status(400).json({ message: 'ID de Usuario invalido' });
+    }
+
     if (req.userId !== userId) {
         return res.status(403).json({ message: 'Este usuario no tiene sesion activa' });
     }

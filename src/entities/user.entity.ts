@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from 'typeorm';
 import { Token } from './token.entity';
+import { MoviesViews } from './moviesViews.entity';
 
 @Entity()
 export class Users {
@@ -17,6 +18,9 @@ export class Users {
 
     @OneToMany(() => Token, token => token.user)
     token!: Token[];
+
+    @OneToMany(() => MoviesViews, movieViews => movieViews.user)
+    views!: MoviesViews[];
 
     @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     createdAt!: Date;

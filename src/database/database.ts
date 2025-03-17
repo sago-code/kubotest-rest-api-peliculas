@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import preloadCategories from './init';
+import preloadCategories from '../init';
 
 export const Database = new DataSource({
     type: 'mysql',

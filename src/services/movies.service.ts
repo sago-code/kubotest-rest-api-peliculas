@@ -1,4 +1,4 @@
-import { Database } from '../database';
+import { Database } from '../database/database';
 
 export class MoviesService {
     async getMovies(): Promise<any> {
@@ -8,7 +8,55 @@ export class MoviesService {
 
         try {
             const movies = await queryRunner.manager.query(
-                'CALL get_movies()'
+                'SELECT * FROM movies'
+            );
+
+            await queryRunner.commitTransaction();
+
+            return movies;
+        } catch (error) {
+            await queryRunner.rollbackTransaction();
+            throw error;
+        } finally {
+            await queryRunner.release();
+        }
+    }
+
+    async getMoviesWithFilters(
+        movieTitle: string, 
+        categoryId: number | null, 
+        page: number, 
+        pagesize: number
+    ): Promise<any> {
+        const queryRunner = Database.createQueryRunner();
+        await queryRunner.connect();
+        await queryRunner.startTransaction();
+
+        try {
+            const movies = await queryRunner.manager.query(
+                'CALL get_movies_temp(?, ?, ?, ?)',
+                [movieTitle, categoryId, page, pagesize]
+            );
+
+            await queryRunner.commitTransaction();
+
+            return movies;
+        } catch (error) {
+            await queryRunner.rollbackTransaction();
+            throw error;
+        } finally {
+            await queryRunner.release();
+        }
+    }
+
+    async getReleaseNewMovies(): Promise<any> {
+        const queryRunner = Database.createQueryRunner();
+        await queryRunner.connect();
+        await queryRunner.startTransaction();
+
+        try {
+            const movies = await queryRunner.manager.query(
+                'CALL get_new_releases()'
             );
 
             await queryRunner.commitTransaction();

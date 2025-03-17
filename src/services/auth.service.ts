@@ -1,4 +1,4 @@
-import { Database } from '../database';
+import { Database } from '../database/database';
 import { Users } from '../entities/user.entity';
 import { Token } from '../entities/token.entity';
 import bcrypt from 'bcryptjs';

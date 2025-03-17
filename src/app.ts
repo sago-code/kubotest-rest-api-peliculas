@@ -1,11 +1,12 @@
 import express, { Application } from 'express';
 import chalk from 'chalk';
 import morgan from 'morgan';
-import { Database } from './database';
+import { Database } from './database/database';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
 import categoriesRoutes from './routes/categories.routes';
 import moviesRoutes from './routes/movies.routes';
+import moviesViewsRoutes from './routes/moviesViews.routes'; // Importar la nueva ruta
 
 export class App {
 
@@ -32,6 +33,7 @@ export class App {
         this.app.use('/auth', authRoutes);
         this.app.use('/categories', categoriesRoutes);
         this.app.use('/movies', moviesRoutes);
+        this.app.use('/movies-views', moviesViewsRoutes);
     }
 
     async listen() {

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { Database } from '../database';
+import { Database } from '../database/database';
 import { Token } from '../entities/token.entity';
 import { IsNull } from 'typeorm';
 

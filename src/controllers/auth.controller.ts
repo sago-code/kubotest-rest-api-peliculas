@@ -26,6 +26,10 @@ export const logout = async (req: AuthenticatedRequest, res: Response): Promise<
         return res.status(400).json({ message: 'ID de Usuario es requerido' });
     }
 
+    if (userId == 0) {
+        return res.status(400).json({ message: 'ID de Usuario invalido' });
+    } 
+
     if (req.userId !== userId) {
         return res.status(403).json({ message: 'Este usuario no tiene sesion activa' });
     }

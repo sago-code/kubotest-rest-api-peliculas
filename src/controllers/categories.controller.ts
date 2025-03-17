@@ -12,6 +12,16 @@ export const getCategories = async (req: Request, res: Response): Promise<Respon
     }
 };
 
+export const getCategoryById = async (req: Request, res: Response): Promise<Response> => {
+    const categoryId = parseInt(req.params.categoryId);
+    try {
+        const category = await categoriesService.getCategoryById(categoryId);
+        return res.status(200).json(category);
+    } catch (error) {
+        return res.status(500).json({ message: 'Error mostrando la categoria', error });
+    }
+};
+
 export const createCategory = async (req: Request, res: Response): Promise<Response> => {
     const { name } = req.body;
     try {
@@ -24,7 +34,7 @@ export const createCategory = async (req: Request, res: Response): Promise<Respo
 
 export const updateCategory = async (req: Request, res: Response): Promise<Response> => {
     const { name } = req.body;
-    const categoryId = parseInt(req.query.id as string);
+    const categoryId = parseInt(req.query.categoryId as string);
     try {
         await categoriesService.updateCategory(categoryId, name);
         return res.status(200).json({ message: 'Categoria actualizada' });
