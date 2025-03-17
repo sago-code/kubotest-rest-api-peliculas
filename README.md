@@ -74,6 +74,7 @@ docker run -p 3000:3000 kubotest-movies-api
 ´´´
 ├── Dockerfile # Configuración básica de Node.js
 └── .dockerignore # Archivos ignorados en el build
+```
 
 # Iniciar el servidor en modo desarrollo
 
