@@ -71,13 +71,15 @@ docker run -p 3000:3000 kubotest-movies-api
 - Asegúrate de tener las variables de entorno configuradas para la conexión a la base de datos
 
 ### Estructura de Archivos Docker
+´´´
 ├── Dockerfile # Configuración básica de Node.js
 └── .dockerignore # Archivos ignorados en el build
 
 # Iniciar el servidor en modo desarrollo
+
+```
 npm run dev
 ```
-
 ## Uso de la API
 
 ### Endpoints Disponibles
